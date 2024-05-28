@@ -6,6 +6,7 @@ import sys
 from utils.ruta import *
 from utils.controlador import *
 from utils.archivo import *
+from utils.modelo import *
 
 def crear_ruta(ruta_archivo, tipo, nombre):
     print("Sacando nombre del blueprint...")
@@ -36,6 +37,11 @@ def crear_controlador(ruta_archivo, tipo, nombre):
 
     Archivo.modificar_archivo(ruta_archivo, texto)
 
+def crear_modelo(ruta_archivo, nombre):
+    print("Creando modelo final...")
+    texto = Modelo.ruta_final(nombre)
+
+    Archivo.modificar_archivo(ruta_archivo, texto)
     
 # Se lee la ruta de las carpetas que contienen "modelo" y el entorno a modificar
 def leer_archivo(ruta_proyecto, nombre_archivo, tipo, nombre):
@@ -57,6 +63,7 @@ def leer_archivo(ruta_proyecto, nombre_archivo, tipo, nombre):
             for filename in filenames:
                 if nombre_archivo in filename:
                     ruta_archivo = os.path.join(dirpath, filename)
+                    crear_modelo(ruta_archivo, nombre)
 
 
 if __name__ == "__main__":
