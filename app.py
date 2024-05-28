@@ -26,10 +26,6 @@ def crear_ruta(ruta_archivo, tipo, nombre):
 
     Archivo.modificar_archivo(ruta_archivo, texto)
 
-    # Abrir el archivo en modo append (agregar al final) y escribir la nueva ruta
-    #with open(ruta_archivo, 'a', encoding='utf-8') as archivo_salida:
-    #    archivo_salida.write(ruta)
-
 def crear_controlador(ruta_archivo, tipo, nombre):
     print("Sacando nombre del modelo...")
     modelo = Controlador.sacar_modelo(ruta_archivo)
@@ -49,7 +45,7 @@ def leer_archivo(ruta_proyecto, nombre_archivo, tipo, nombre):
             for filename in filenames:
                 if nombre_archivo in filename:
                     ruta_archivo = os.path.join(dirpath, filename)
-                    #crear_ruta(ruta_archivo, tipo, nombre)
+                    crear_ruta(ruta_archivo, tipo, nombre)
 
         if 'controllers' in dirpath and 'pycache' not in dirpath:
             for filename in filenames:

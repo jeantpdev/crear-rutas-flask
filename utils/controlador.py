@@ -18,8 +18,8 @@ class Controlador:
     def ruta_final(tipo, modelo, nombre):
         ruta = f"""
 
-def {tipo}_{nombre}(self):
-        query = {modelo}.{nombre}()
-        return query
+    def {tipo}_{nombre}(self):
+            query = {modelo}.{nombre}()
+            return query
     """
         return ruta
