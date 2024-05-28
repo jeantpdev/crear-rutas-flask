@@ -4,6 +4,7 @@
 import os
 import sys
 from utils.ruta import *
+from utils.controlador import *
 from utils.archivo import *
 
 def crear_ruta(ruta_archivo, tipo, nombre):
@@ -29,6 +30,15 @@ def crear_ruta(ruta_archivo, tipo, nombre):
     #with open(ruta_archivo, 'a', encoding='utf-8') as archivo_salida:
     #    archivo_salida.write(ruta)
 
+def crear_controlador(ruta_archivo, tipo, nombre):
+    print("Sacando nombre del modelo...")
+    modelo = Controlador.sacar_modelo(ruta_archivo)
+    print("El modelo es", modelo)
+
+    print("Creando controlador final...")
+    texto = Controlador.ruta_final(tipo, modelo, nombre)
+
+    Archivo.modificar_archivo(ruta_archivo, texto)
 
     
 # Se lee la ruta de las carpetas que contienen "modelo" y el entorno a modificar
@@ -39,12 +49,13 @@ def leer_archivo(ruta_proyecto, nombre_archivo, tipo, nombre):
             for filename in filenames:
                 if nombre_archivo in filename:
                     ruta_archivo = os.path.join(dirpath, filename)
-                    crear_ruta(ruta_archivo, tipo, nombre)
+                    #crear_ruta(ruta_archivo, tipo, nombre)
 
         if 'controllers' in dirpath and 'pycache' not in dirpath:
             for filename in filenames:
                 if nombre_archivo in filename:
                     ruta_archivo = os.path.join(dirpath, filename)
+                    crear_controlador(ruta_archivo, tipo, nombre)
         
         if 'models' in dirpath and 'pycache' not in dirpath:
             for filename in filenames:
