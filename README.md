@@ -44,6 +44,6 @@ Ejemplo
 ```cmd
 py app.py "C:\Users\proyectos\python\proyecto-mvc" "iniciar_sesion" "delete" "eliminar_usuarios_de_lideres"
 ```
-
+![Diagrama de flujo](https://res.cloudinary.com/dkuw4zg2h/image/upload/v1717016715/Proyectos/api-sql-crm/igxqgva78ulvrci6cpoj.png)
 
 #### **Por mejorar**
